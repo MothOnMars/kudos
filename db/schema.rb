@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20150301185918) do
   add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email_address"
-    t.integer  "organization_id"
+    t.string   "firstname",       null: false
+    t.string   "lastname",        null: false
+    t.string   "email_address",   null: false
+    t.integer  "organization_id", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

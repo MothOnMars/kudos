@@ -43,9 +43,12 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+  gem 'annotate', '~> 2.6.5'
 end
 
 group :test do
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 2.8.0', require: false
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner', '~> 1.4.0'
 end
 
