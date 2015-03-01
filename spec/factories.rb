@@ -9,4 +9,10 @@ FactoryGirl.define do
     lastname  "Doe"
     sequence(:email_address) { |n| "user-#{n}@example.com" }
   end
+
+  factory :kudo do
+    message "hurrah for so and so"
+    association :sender, factory: :user
+    association :recipient, factory: :user
+  end
 end

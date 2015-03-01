@@ -1,0 +1,2 @@
+class KudosController < ApplicationController
+end

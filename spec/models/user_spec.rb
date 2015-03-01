@@ -19,5 +19,7 @@ describe User do
 
   describe 'associations' do
     it { should belong_to(:organization) }
+    it { should have_many(:kudos_received) }
+    it { should have_many(:kudos_sent) }
   end
 end
