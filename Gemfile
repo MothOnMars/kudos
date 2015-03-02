@@ -46,6 +46,8 @@ group :development, :test do
   gem 'annotate', '~> 2.6.5'
   gem 'pry-rails'
   gem 'awesome_print', '~> 1.6.1'
+  gem 'faker', '~> 1.4.3'
+  gem 'formatador', '~> 0.2.5'
 end
 
 group :test do

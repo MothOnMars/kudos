@@ -15,7 +15,17 @@ class Kudo < ActiveRecord::Base
   belongs_to :recipient, class_name: 'User'
 
   validates_presence_of :message, :sender_id, :recipient_id
+  validate :user_can_send_kudo
 
   #assumption: number of kudos is per week starting Monday, not within 7 days
   scope :this_week , lambda { where('created_at > ?', Time.now.at_beginning_of_week) }
+
+  private
+
+  def user_can_send_kudo
+    #TODO: fix this - smelly
+    unless sender.can_send_kudo?
+      errors.add(:user, "has sent the maximum weekly kudos")
+    end
+  end
 end

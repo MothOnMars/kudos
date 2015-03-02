@@ -27,22 +27,8 @@ describe User do
   end
 
   describe 'giving kudos' do
-    subject(:give_kudo) { user.give_kudo(another_user.id, 'you rock!') }
-
-    describe '#give_kudo' do
-      it 'gives a kudo to the specified user' do
-        expect{ give_kudo }.to change{another_user.received_kudos.count}.from(0).to(1)
-      end
-
-      it 'includes the correct message' do
-        give_kudo
-        expect( another_user.received_kudos.first.message ).to eq('you rock!')
-      end
-
-      it 'only allows 3 kudos to be given per week' do
-        3.times { user.give_kudo(another_user.id, 'you rock!') }
-        expect{ give_kudo }.to raise_error(User::KudoLimitError, /user has already sent/)
-      end
+    subject(:give_kudo) do
+      user.sent_kudos.create!(recipient: another_user, message: 'you rock!')
     end
 
     describe '#kudos_available' do
@@ -52,6 +38,18 @@ describe User do
 
       it 'decreases as kudos are given' do
         expect{ give_kudo }.to change{user.kudos_available}.from(3).to(2)
+      end
+    end
+
+    describe '#can_send_kudo?' do
+      it 'is true when the user has kudos available' do
+        user.stub(:kudos_available).and_return(2)
+        expect(user.can_send_kudo?).to be true
+      end
+
+      it 'is true when the user has kudos available' do
+        user.stub(:kudos_available).and_return(0)
+        expect(user.can_send_kudo?).to be false
       end
     end
   end

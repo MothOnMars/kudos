@@ -12,8 +12,6 @@
 #
 
 class User < ActiveRecord::Base
-  class KudoLimitError < StandardError; end
-
   #assumption: a user can only belong to one org
   belongs_to :organization
   has_many :sent_kudos, class_name: 'Kudo', foreign_key: 'sender_id'
@@ -24,15 +22,11 @@ class User < ActiveRecord::Base
 
   MAX_KUDOS_PER_WEEK = 3
 
-  def give_kudo(recipient_id,message)
-    if kudos_available > 0
-      self.sent_kudos.create!(recipient_id: recipient_id, message: message)
-    else
-      raise KudoLimitError, "This user has already sent 3 kudos this week"
-    end
+  def kudos_available
+    MAX_KUDOS_PER_WEEK - sent_kudos.this_week.count
   end
 
-  def kudos_available
-    MAX_KUDOS_PER_WEEK  - sent_kudos.this_week.count
+  def can_send_kudo?
+    kudos_available > 0
   end
 end
