@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'annotate', '~> 2.6.5'
   gem 'pry-rails'
+  gem 'awesome_print', '~> 1.6.1'
 end
 
 group :test do
