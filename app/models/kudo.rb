@@ -15,4 +15,7 @@ class Kudo < ActiveRecord::Base
   belongs_to :recipient, class_name: 'User'
 
   validates_presence_of :message, :sender_id, :recipient_id
+
+  #assumption: number of kudos is per week starting Monday, not within 7 days
+  scope :this_week , lambda { where('created_at > ?', Time.now.at_beginning_of_week) }
 end

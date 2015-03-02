@@ -19,4 +19,20 @@ describe Kudo do
     it { should belong_to(:sender) }
     it { should belong_to(:recipient) }
   end
+
+  describe 'scopes' do
+    describe '.this_week' do
+
+      let!(:recent_kudo) { create(:kudo) }
+      let!(:old_kudo) { create(:kudo, created_at: 2.weeks.ago) }
+
+      it 'includes kudos created in current work week' do
+        expect(Kudo.this_week).to include(recent_kudo)
+      end
+
+      it 'does not include kudos created before the current work week' do
+        expect(Kudo.this_week).to_not include(old_kudo)
+      end
+    end
+  end
 end
