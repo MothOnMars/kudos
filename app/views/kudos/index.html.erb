@@ -1,0 +1,37 @@
+<h1>Kudos Received</h1>
+
+<table>
+  <tr>
+    <th>Kudo</th>
+    <th>Sent by</th>
+    <th>Date</th>
+  </tr>
+
+  <% @received_kudos.each do |kudo| %>
+  <tr>
+    <td><%= kudo.message %></td>
+    <td><%= kudo.sender_full_name %></td>
+    <td><%= kudo.created_at.localtime.strftime('%m/%d/%Y %H:%M:%S') %></td> 
+  </tr>
+  <% end %>
+</table>
+
+<h1>Kudos Sent</h1>
+
+<table>
+  <tr>
+    <th>Kudo</th>
+    <th>Sent to</th>
+    <th>Date</th>
+  </tr>
+
+  <% @sent_kudos.each do |kudo| %>
+  <tr>
+    <td><%= kudo.message %></td>
+    <td><%= kudo.recipient_full_name %></td>
+    <td><%= kudo.created_at.localtime.strftime('%m/%d/%Y %H:%M:%S') %></td> 
+  </tr>
+  <% end %>
+</table>
+
+<%= kudos_call_to_action %>

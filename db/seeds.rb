@@ -4,9 +4,12 @@ puts  'creating orgs...'
 puts 'creating users...'
 @organizations.each do |org|
   10.times do
-    User.create!(firstname: Faker::Name.first_name,
-                 lastname: Faker::Name.last_name,
-                 email_address: "user-#{Time.now.to_f}@example.com",
+    first = Faker::Name.first_name
+    last = Faker::Name.last_name
+    User.create!(firstname: first,
+                 lastname: last,
+                 email: "#{first}.#{last}@example.com".downcase,
+                 password: 'password',
                  organization: org)
   end
 end
@@ -39,7 +42,7 @@ end
 
 test_users = new_users.all.map do |user|
   {id:    user.id,
-   email: user.email_address,
+   email: user.email,
    org:   user.organization.name,
    name:  "#{user.firstname} #{user.lastname}",
    kudos_sent: user.sent_kudos.count,

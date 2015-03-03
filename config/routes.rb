@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: "kudos#index" #required by Devise
   resources :kudos
 
   # The priority is based upon order of creation: first created -> highest priority.

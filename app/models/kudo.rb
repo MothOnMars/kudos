@@ -20,6 +20,9 @@ class Kudo < ActiveRecord::Base
   #assumption: number of kudos is per week starting Monday, not within 7 days
   scope :this_week , lambda { where('created_at > ?', Time.now.at_beginning_of_week) }
 
+  delegate :full_name, to: :sender, prefix: true
+  delegate :full_name, to: :recipient, prefix: true
+
   private
 
   def user_can_send_kudo

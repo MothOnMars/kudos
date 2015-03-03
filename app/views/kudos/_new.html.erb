@@ -1,0 +1,9 @@
+<h1>Send someone a kudo!</h1>
+
+<%= form_for @kudo, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= text_field_tag :email, 'email address' %>
+  <%= f.text_area :message %>
+  <%= f.submit "Send Kudo", class: "btn btn-primary" %>
+<% end %>
+
+

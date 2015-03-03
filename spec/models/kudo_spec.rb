@@ -15,7 +15,7 @@ describe Kudo do
     it { should validate_presence_of(:message) }
 
     it 'is invalid if the user cannot send kudos' do
-      kudo.sender.stub(:can_send_kudo?).and_return(false)
+      allow(kudo.sender).to receive(:can_send_kudo?).and_return(false)
       expect(kudo).to_not be_valid
     end
   end
@@ -40,4 +40,7 @@ describe Kudo do
       end
     end
   end
+
+  describe '#sender_full_name'
+  describe '#recipient_full_name'
 end

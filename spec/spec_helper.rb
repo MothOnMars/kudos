@@ -70,4 +70,6 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.include Devise::TestHelpers, type: :controller
 end

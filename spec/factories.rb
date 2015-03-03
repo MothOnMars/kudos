@@ -7,7 +7,7 @@ FactoryGirl.define do
     organization
     firstname "Jane"
     lastname  "Doe"
-    sequence(:email_address) { |n| "user-#{n}@example.com" }
+    sequence(:email) { |n| "user-#{n}@example.com" }
   end
 
   factory :kudo do
