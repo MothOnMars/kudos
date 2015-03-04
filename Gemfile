@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise', '~> 3.4.1'
+gem 'bootstrap-sass', '~> 3.3.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,5 +57,6 @@ group :test do
   gem 'shoulda-matchers', '~> 2.8.0', require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner', '~> 1.4.0'
+  gem 'capybara', '~> 2.4.4'
 end
 

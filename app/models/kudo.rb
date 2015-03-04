@@ -11,8 +11,8 @@
 #
 
 class Kudo < ActiveRecord::Base
-  belongs_to :sender, class_name: 'User'
-  belongs_to :recipient, class_name: 'User'
+  belongs_to :sender, class_name: 'User', inverse_of: :sent_kudos
+  belongs_to :recipient, class_name: 'User', inverse_of: :received_kudos
 
   validates_presence_of :message, :sender_id, :recipient_id
   validate :user_can_send_kudo

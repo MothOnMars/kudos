@@ -1,9 +1,12 @@
-<h1>Send someone a kudo!</h1>
+<h1>You can send <%= current_user.kudos_available %> more kudos this week. Send someone a kudo!</h1>
 
-<%= form_for @kudo, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= text_field_tag :email, 'email address' %>
-  <%= f.text_area :message %>
-  <%= f.submit "Send Kudo", class: "btn btn-primary" %>
+<%= form_for @kudo, url: {action: "create"}, html: {class: "form-inline"} do |f| %>
+  <div class: 'form-group'>
+    <%= email_field_tag :email, 'enter email address', required: true, class: 'form-control' %>
+    <%= f.text_area :message, required: true, class: 'form-control' %>
+  
+    <%= f.submit "Send Kudo", class: "btn btn-primary" %>
+    </div>
 <% end %>
 
 

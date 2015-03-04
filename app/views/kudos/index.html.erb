@@ -1,6 +1,9 @@
-<h1>Kudos Received</h1>
+<%= kudos_call_to_action %>
+<div class='row well'>
+<h3>Your Kudos</h3>
+<h4>Kudos Received</h4>
 
-<table>
+<table class='table table-condensed'>
   <tr>
     <th>Kudo</th>
     <th>Sent by</th>
@@ -11,14 +14,14 @@
   <tr>
     <td><%= kudo.message %></td>
     <td><%= kudo.sender_full_name %></td>
-    <td><%= kudo.created_at.localtime.strftime('%m/%d/%Y %H:%M:%S') %></td> 
+    <td><%= kudo.created_at.localtime.strftime('%m/%d/%Y %H:%M') %></td> 
   </tr>
   <% end %>
 </table>
 
-<h1>Kudos Sent</h1>
+<h4>Kudos Sent</h4>
 
-<table>
+<table class='table table-condensed'>
   <tr>
     <th>Kudo</th>
     <th>Sent to</th>
@@ -29,9 +32,8 @@
   <tr>
     <td><%= kudo.message %></td>
     <td><%= kudo.recipient_full_name %></td>
-    <td><%= kudo.created_at.localtime.strftime('%m/%d/%Y %H:%M:%S') %></td> 
+    <td><%= kudo.created_at.localtime.strftime('%m/%d/%Y %H:%M') %></td> 
   </tr>
   <% end %>
 </table>
-
-<%= kudos_call_to_action %>
+</div>

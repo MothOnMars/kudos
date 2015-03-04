@@ -45,9 +45,8 @@ test_users = new_users.all.map do |user|
    email: user.email,
    org:   user.organization.name,
    name:  "#{user.firstname} #{user.lastname}",
-   kudos_sent: user.sent_kudos.count,
-   kudos_received: user.received_kudos.count}
+   kudos_sent: user.sent_kudos.this_week.count}
 end
 
 puts "Users created for testing (password for all is 'password'):"
-Formatador.display_table(test_users, [:id, :email, :name, :org, :kudos_sent, :kudos_received])
+Formatador.display_table(test_users, [:id, :email, :name, :org, :kudos_sent])
