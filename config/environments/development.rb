@@ -40,4 +40,21 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = false
+    Bullet.console = true
+    Bullet.growl = false
+    #Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
+    #                :password => 'bullets_password_for_jabber',
+    #                :receiver => 'your_account@jabber.org',
+    #                :show_online_status => true }
+    Bullet.rails_logger = true
+    Bullet.bugsnag = false
+    Bullet.airbrake = false
+    Bullet.add_footer = false
+    #Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
+  end
 end

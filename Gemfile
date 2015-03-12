@@ -51,6 +51,7 @@ group :development, :test do
   gem 'awesome_print', '~> 1.6.1'
   gem 'faker', '~> 1.4.3'
   gem 'formatador', '~> 0.2.5'
+  gem 'bullet', '~> 4.14.4'
 end
 
 group :test do
